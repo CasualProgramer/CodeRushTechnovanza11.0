@@ -121,6 +121,9 @@
       transition: 0.2s ease;
       border: none;
       color: white;
+      text-decoration: none;
+      text-align: center;
+      line-height: 38px;
     }
 
     .user-badge:hover {
@@ -175,7 +178,8 @@
     <div class="main">
       <div class="header">
         <input class="resume-name" value="<Resume Name>" spellcheck="false" />
-        <input type="button" class="user-badge" value="NV" onclick="profileClicked()">
+        <!-- Profile button now redirects to login.html -->
+        <a href="login.html" class="user-badge">Login</a>
       </div>
 
       <div class="chat-area">
@@ -185,11 +189,5 @@
       <input class="input-bar" type="text" placeholder="TEXT HERE!" />
     </div>
   </div>
-
-  <script>
-    function profileClicked() {
-      alert("Profile button clicked!");
-    }
-  </script>
 </body>
 </html>
