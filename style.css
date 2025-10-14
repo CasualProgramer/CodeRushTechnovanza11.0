@@ -1,0 +1,113 @@
+*{
+    background-color: #010101;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arimo', sans-serif;
+    font-weight: bold;
+}
+#LogINPROP{
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #2c2c37;
+}
+#LogINcontainer{
+    position: absolute;
+    right: 4%;
+    top: 5%;
+    width: 95%;
+    height: 90%;
+    border-radius: 40px;
+    background-color: #2c2c37;
+}
+#singInLogo{
+    position: absolute;
+    right: 37%;
+    top: 1%;
+    width: 25%;
+    height: auto;
+    background-color: transparent;
+}
+#singUpLogo{
+    position: absolute;
+    right: 39.9%;
+    top: 5%;
+    width: 20%;
+    height: auto;
+    background-color: transparent;
+}
+#SignInLabel{   
+    background-color: transparent;
+    color: white;
+    position: absolute;
+    right: 47%;
+    top: 55%;
+}
+#SignUpLabel{
+    background-color: transparent;
+    color: white;
+    position: absolute;
+    right: 47%;
+    top: 53%;
+}
+
+.SignInput{
+    position: absolute;
+    right: 5%;
+    text-align: center;
+    width: 90%;
+    height: 7%;
+    border-width: 0px;
+    border-radius: 20px;
+    font-size: large;
+    color: white;
+}
+
+#LogInNameInput{
+    position: absolute;
+    top: 60%;
+}
+#LogInPasswordInput{
+    position: absolute;
+    top: 69%;
+}
+
+.SignButton{
+    position: absolute;
+    right: 20%;
+    text-align: center;
+    width: 60%;
+    height: 7%;
+    border-width: 0px;
+    border-radius: 20px;
+    font-size: large;
+    background-color: #d9d9d9;
+    
+    color: #010101;
+}
+.SignButton:active{
+    background-color: white;
+}
+#LogInButton{
+    position: absolute;
+    top: 78%;
+}
+#SignUpButton{
+    position: absolute;
+    top: 90%;
+}
+#SignUpConfirmPasswordInput{
+    position: absolute;
+    top: 80%;
+}
+#SignUpPasswordInput{
+    position: absolute;
+    top: 70%;
+}
+#SignUpNameInput{
+    position: absolute;
+    top: 60%;
+}
