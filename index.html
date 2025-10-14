@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Builder UI</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0f0f16;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+    }
+
+    
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    
+    .sidebar {
+      background-color: #242430;
+      width: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      gap: 15px;
+    }
+
+    .sidebar-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 8px;
+      background-color: #bdbdbd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #111;
+      cursor: pointer;
+      user-select: none;
+      transition: 0.2s;
+    }
+
+    .sidebar-btn.add {
+      background-color: #fff;
+      color: #111;
+    }
+
+    .sidebar-btn:hover {
+      opacity: 0.8;
+    }
+
+    
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #1b1b25;
+      border-radius: 10px 0 0 10px;
+      overflow: hidden;
+    }
+
+    
+    .header {
+      background-color: #12121a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 20px;
+      border-bottom: 1px solid #2a2a35;
+      position: relative;
+    }
+
+    
+    .resume-name {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ccc;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      width: 200px;
+      cursor: text;
+    }
+
+    .resume-name:focus {
+      color: #fff;
+      border-bottom: 1px solid #555;
+    }
+
+    
+    .user-badge {
+      position: absolute;
+      right: 20px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #2a2a35;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s ease;
+      border: none;
+      color: white;
+    }
+
+    .user-badge:hover {
+      background-color: #3a3a45;
+      box-shadow: 0 0 8px #6b6bff;
+    }
+
+    .user-badge:active {
+      transform: scale(0.95);
+    }
+
+    
+    .chat-area {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    
+    .input-bar {
+      background-color: #2a2a35;
+      border: none;
+      outline: none;
+      margin: 15px;
+      border-radius: 8px;
+      padding: 14px;
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      width: calc(100% - 30px);
+    }
+
+    .input-bar::placeholder {
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="sidebar">
+      <div class="sidebar-btn"></div>
+      <div class="sidebar-btn add">+</div>
+    </div>
+
+    
+    <div class="main">
+      <div class="header">
+        <input class="resume-name" value="<Resume Name>" spellcheck="false" />
+        <button class="user-badge" onclick="profileClicked()">NV</button>
+      </div>
+
+      <div class="chat-area">
+        
+      </div>
+
+      <input class="input-bar" type="text" placeholder="TEXT HERE!" />
+    </div>
+  </div>
+
+  <script>
+    function profileClicked() {
+      alert("Profile button clicked!");
+    }
+  </script>
+</body>
+</html>
