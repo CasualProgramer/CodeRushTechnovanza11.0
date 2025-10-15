@@ -5,6 +5,12 @@
     font-family: 'Arimo', sans-serif;
     font-weight: bold;
 }
+#login{
+    display: none;
+}
+#signUp{
+    display: none;
+}
 #LogINPROP{
     position: absolute;
     right: 3%;
@@ -120,4 +126,14 @@
     position: absolute;
     top: 95%;
     left: 95%;
+}
+
+.dialogueBox{
+    padding: 20px;
+    width: calc(50% - 20px);
+    background-color: #2c2c37;
+    border-radius: 20px;
+}
+#userDialogue{
+    text-align: right;
 }
