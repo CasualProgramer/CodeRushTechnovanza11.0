@@ -4,12 +4,13 @@ let users = [];
 let dataLoaded = false;
 let chatIndex = 0;
 
-let userData = {
+let resumeData = {
   name: "",
+  contact: "",
   skills: "",
-  projects: "",
-  email: "",
-  website: ""
+  education: "",
+  experience: "",
+  awards: ""
 };
 
 // Load users.json (if exists)
@@ -96,11 +97,12 @@ function login() {
 // ---------------------- CHATBOT ----------------------
 
 const dialogues = [
-  "Hello! Let's build your portfolio together. What's your full name?",
-  "Great! What are your main skills? (e.g. HTML, CSS, JS)",
-  "Awesome. What projects have you worked on?",
-  "What's your email address?",
-  "Finally, do you have a personal website or GitHub link?"
+  "Let's create your resume! What’s your full name?",
+  "Great! Please enter your contact details (Address, Phone, Email).",
+  "Write a short skills summary about yourself.",
+  "Now, tell me your education details (Degree, School, Year).",
+  "List your work experience (Company, Role, Duration, Achievements).",
+  "Any awards or recognitions you’d like to mention?"
 ];
 
 function startChat() {
@@ -121,17 +123,18 @@ function startChat() {
       addUserMessage(answer);
 
       // Save answer
-      if (chatIndex === 0) userData.name = answer;
-      if (chatIndex === 1) userData.skills = answer;
-      if (chatIndex === 2) userData.projects = answer;
-      if (chatIndex === 3) userData.email = answer;
-      if (chatIndex === 4) userData.website = answer;
+      if (chatIndex === 0) resumeData.name = answer;
+      if (chatIndex === 1) resumeData.contact = answer;
+      if (chatIndex === 2) resumeData.skills = answer;
+      if (chatIndex === 3) resumeData.education = answer;
+      if (chatIndex === 4) resumeData.experience = answer;
+      if (chatIndex === 5) resumeData.awards = answer;
 
       chatIndex++;
       if (chatIndex < dialogues.length) {
         setTimeout(() => addBotMessage(dialogues[chatIndex]), 600);
       } else {
-        setTimeout(generatePortfolioPreview, 1000);
+        setTimeout(generateResumePreview, 1000);
       }
     }
   };
@@ -157,38 +160,53 @@ function addUserMessage(text) {
   chatArea.scrollTop = chatArea.scrollHeight;
 }
 
-function generatePortfolioPreview() {
+function generateResumePreview() {
   const chatArea = document.querySelector('.chat-area');
-  addBotMessage("Awesome! Here’s your portfolio summary:");
+  addBotMessage("Here’s your resume preview:");
 
   const box = document.createElement("div");
   box.innerHTML = `
-    <div id="portfolioPreview" style="background:#2c2c37;padding:20px;border-radius:15px;margin-top:15px;line-height:1.6">
-      <h2 style="color:white;">${userData.name}</h2>
-      <p><strong>Skills:</strong> ${userData.skills}</p>
-      <p><strong>Projects:</strong> ${userData.projects}</p>
-      <p><strong>Email:</strong> ${userData.email}</p>
-      <p><strong>Website:</strong> <a href="${userData.website}" target="_blank" style="color:#6b6bff;">${userData.website}</a></p>
+    <div id="resumePreview" style="background:white;color:black;padding:30px;border-radius:10px;margin-top:15px;font-family:Arial;max-width:600px;line-height:1.6">
+      <h2 style="background-color: #ffffff;border-bottom:2px solid black;padding-bottom:5px;">${resumeData.name}</h2>
+      <p style="background-color: #ffffff;"><strong>${resumeData.contact}</strong></p>
+      <br>
+      <h3 style="background-color: #ffffff;">Skills Summary</h3>
+      <p style="background-color: #ffffff;">${resumeData.skills}</p>
+      <br>
+      <h3 style="background-color: #ffffff;">Education</h3>
+      <p style="background-color: #ffffff;">${resumeData.education}</p>
+      <br>
+      <h3 style="background-color: #ffffff;">Experience</h3>
+      <p style="background-color: #ffffff;">${resumeData.experience}</p>
+      <br>
+      <h3 style="background-color: #ffffff;">Awards and Acknowledgements</h3>
+      <p style="background-color: #ffffff;">${resumeData.awards}</p>
     </div>
-    <button id="downloadPDF" style="margin-top:15px;padding:10px 20px;background:#6b6bff;border:none;border-radius:10px;color:white;font-weight:bold;cursor:pointer;">⬇ Download as PDF</button>
+    <button id="downloadPDF" style="margin-top:15px;padding:10px 20px;background:#6b6bff;border:none;border-radius:10px;color:white;font-weight:bold;cursor:pointer;">⬇ Download Resume (PDF)</button>
   `;
   chatArea.appendChild(box);
   chatArea.scrollTop = chatArea.scrollHeight;
 
-  // PDF download
   document.getElementById("downloadPDF").addEventListener("click", () => {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
     doc.setFontSize(18);
-    doc.text(userData.name, 10, 20);
-
+    doc.text(resumeData.name, 10, 20);
     doc.setFontSize(12);
-    doc.text(`Skills: ${userData.skills}`, 10, 35);
-    doc.text(`Projects: ${userData.projects}`, 10, 45);
-    doc.text(`Email: ${userData.email}`, 10, 55);
-    doc.text(`Website: ${userData.website}`, 10, 65);
-
-    doc.save(`${userData.name}_Portfolio.pdf`);
+    doc.text(resumeData.contact, 10, 30);
+    doc.text("----------------------------------------------------------------------------------------------------------------------------", 10, 35);
+    doc.text("Skills Summary:", 10, 45);
+    doc.text(resumeData.skills, 10, 52, { maxWidth: 180 });
+    doc.text("----------------------------------------------------------------------------------------------------------------------------", 10, 60);
+    doc.text("Education:", 10, 70);
+    doc.text(resumeData.education, 10, 77, { maxWidth: 180 });
+    doc.text("----------------------------------------------------------------------------------------------------------------------------", 10, 90);
+    doc.text("Experience:", 10, 95);
+    doc.text(resumeData.experience, 10, 102, { maxWidth: 180 });
+    doc.text("----------------------------------------------------------------------------------------------------------------------------", 10, 110);
+    doc.text("Awards and Acknowledgements:", 10, 120);
+    doc.text(resumeData.awards, 10, 127, { maxWidth: 180 });
+    doc.save(`${resumeData.name}_Resume.pdf`);
   });
 }
